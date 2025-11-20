@@ -1,0 +1,31 @@
+name: Mazot Botu Zamanlayici
+
+on:
+  schedule:
+    # Her sabah 05:00 UTC (Türkiye saatine göre 08:00) çalıştır
+    - cron: '0 5 * * *'
+  workflow_dispatch: # Manuel çalıştırmaya izin ver
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu İndir
+        uses: actions/checkout@v3
+
+      - name: Python Kurulumu
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Gerekli Kütüphaneleri Yükle
+        run: |
+          pip install requests tweepy beautifulsoup4
+
+      - name: Botu Çalıştır ve Tweet At
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+        run: python main.py
