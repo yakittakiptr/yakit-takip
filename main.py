@@ -112,10 +112,7 @@ if __name__ == "__main__":
     
     if veriler:
         print(f"\n💰 TWEET ATILACAK VERİLER:\n{veriler}")
-        soru = input("\nTweet gönderilsin mi? (e/h): ")
-        if soru.lower() == "e":
-            tweet_at(veriler)
-        else:
-            print("İptal edildi.")
+        tweet_at(veriler)
+       
     else:
         print("❌ Uygun veri bulunamadı.")
