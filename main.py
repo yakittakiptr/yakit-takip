@@ -94,7 +94,7 @@ def tweet_at(fiyatlar):
 Benzi̇n:  {fiyatlar['Benzin']} TL
 Motori̇n: {fiyatlar['Motorin']} TL
 
-📅 Tarih: {time.strftime("%d.%m.%Y")}
+📅 Tarih: #TS{int(time.time())}
 
 #akaryakıt #benzin #motorin #lpg #zam #indirim"""
 
